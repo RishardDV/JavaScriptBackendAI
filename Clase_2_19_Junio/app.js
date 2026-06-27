@@ -10,7 +10,9 @@ console.log(tituloTarea);
 console.log(fechaCreacion);
 
 
+
 //! Tipos de variables
+
 //& String
 let mensaje = "Hola Mundo!";
 
@@ -45,10 +47,11 @@ console.log("Aca empiezan los operadores de comparación");
 const prioridadA = 5;
 const prioridadB = 3;
 
-console.log(prioridadA > prioridadB);   // true
-console.log(prioridadA < prioridadB);   // true
+console.log(prioridadA > prioridadB);
+console.log(prioridadA === prioridadB);   // true
+console.log(prioridadA == prioridadB);   // true
 
-console.log(prioridadA === prioridadB);
+
 
 
 //* Operadores lógicos
@@ -60,12 +63,3 @@ const prioridadBaja = false;
 console.log(prioridadAlta && !prioridadBaja);  
 console.log(prioridadAlta || !prioridadBaja);  
 
-const precioTexto = "5";
-
-const precioNumero = Number(precioTexto);
-
-const envio = 10;
-
- 
-
-console.log(precioNumero + envio);
