@@ -5,6 +5,10 @@ type CrearCategoriaInput = {
   nombre: string;
 };
 
+type ActualizarCategoriaInput = {
+  nombre?: string;
+};
+
 @Injectable()
 export class CategoriasService {
   constructor(private readonly prisma: PrismaService) {}
@@ -12,6 +16,7 @@ export class CategoriasService {
   crear(datos: CrearCategoriaInput) {
     return this.prisma.categoria.create({
       data: { nombre: datos.nombre },
+      include: { productos: true },
     });
   }
 
@@ -19,6 +24,28 @@ export class CategoriasService {
     return this.prisma.categoria.findMany({
       include: { productos: true },
       orderBy: { id: 'asc' },
+    });
+  }
+
+  obtenerPorId(id: number) {
+    return this.prisma.categoria.findUnique({
+      where: { id },
+      include: { productos: true },
+    });
+  }
+
+  actualizar(id: number, datos: ActualizarCategoriaInput) {
+    return this.prisma.categoria.update({
+      where: { id },
+      data: datos,
+      include: { productos: true },
+    });
+  }
+
+  eliminar(id: number) {
+    return this.prisma.categoria.delete({
+      where: { id },
+      include: { productos: true },
     });
   }
 }
